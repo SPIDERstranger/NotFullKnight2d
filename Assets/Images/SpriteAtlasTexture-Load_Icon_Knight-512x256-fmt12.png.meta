@@ -1,9 +1,33 @@
 fileFormatVersion: 2
 guid: 7229016fd9264bc4aba94d5779c6f7a5
 TextureImporter:
-  fileIDToRecycleName: {}
+  internalIDToNameTable:
+  - first:
+      213: 4598776386171792259
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_0
+  - first:
+      213: -4230726041771349180
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_1
+  - first:
+      213: -1095733241126383395
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_2
+  - first:
+      213: 4159968477067638388
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_3
+  - first:
+      213: 9021504636685173913
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_4
+  - first:
+      213: 6269463261732065800
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_5
+  - first:
+      213: 4046126362964590362
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_6
+  - first:
+      213: 1160465247543507991
+    second: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_7
   externalObjects: {}
-  serializedVersion: 4
+  serializedVersion: 10
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,7 +44,9 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -31,14 +57,14 @@ TextureImporter:
     serializedVersion: 2
     filterMode: -1
     aniso: -1
-    mipBias: -1
+    mipBias: -100
     wrapU: 1
     wrapV: 1
     wrapW: 1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,11 +77,24 @@ TextureImporter:
   spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
+  singleChannelComponent: 0
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
   platformSettings:
-  - buildTarget: DefaultTexturePlatform
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -67,10 +106,188 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 117
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b961825f4ec2c84785939cd60c8eca1
+      internalID: 4598776386171792259
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_1
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 117
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5341b06624df6904486aa2c33f318f1c
+      internalID: -4230726041771349180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_2
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 117
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 501e0e34202e6174986204d30e33587a
+      internalID: -1095733241126383395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_3
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 117
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01846c8f6838e6a42805d3da7f9bd467
+      internalID: 4159968477067638388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9dba9f7c43585458617443e34f2e92
+      internalID: 9021504636685173913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 1
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb73de4036f6a54e9039b08c53cd7cd
+      internalID: 6269463261732065800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_6
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 1
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 582ce349384e24f4b9ccf7276d5c744d
+      internalID: 4046126362964590362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SpriteAtlasTexture-Load_Icon_Knight-512x256-fmt12_7
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 1
+        width: 82
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bddacf2a61f709c43a6c9f85f5cee65a
+      internalID: 1160465247543507991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
+    bones: []
+    spriteID: beeb09614239c2240a1459d40b5531c3
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
   spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

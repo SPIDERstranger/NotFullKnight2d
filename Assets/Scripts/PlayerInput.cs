@@ -10,14 +10,15 @@ public class PlayerInput : MonoBehaviour
     public string keyLeft;
     public string keyRight;
     public string keyJump;
-    
+    public string keyRush;
 
-    [Header("----- 方向信号 -----")]
+    [Header("----- 按键信号 -----")]
     public float Lup;
     public float Lright;
     public bool Jump = false;
     public bool lastJump = false;
     public float smoothTime;
+    public bool rush;
 
     [Header("----- 其他设置 -----")]
     public bool inputEnable = true;
@@ -29,26 +30,26 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!inputEnable)
+        if (inputEnable)
         {
             targetLup = (Input.GetKey(keyUp) ? 1f : 0) - (Input.GetKey(keyDown) ? 1f : 0);
             targetLright = (Input.GetKey(keyRight) ? 1f : 0) - (Input.GetKey(keyLeft) ? 1f : 0);
-            if(Input.GetKey(keyJump)!=lastJump)
+            if (Input.GetKey(keyJump) != lastJump)
             {
                 Jump = true;
                 lastJump = !lastJump;
-            }// 获取jump 触发器型号
+            }// 获取jump型号
             else
             {
                 Jump = false;
             }
-
+            rush = Input.GetKeyDown(keyRush);
         }
         else
         {
@@ -56,9 +57,10 @@ public class PlayerInput : MonoBehaviour
             targetLup = 0f;
             Jump = false;
             lastJump = false;
+            rush = false;
         }
-        Lup = Mathf.SmoothDamp(Lup,targetLup,ref tempLup,smoothTime);
-        Lright = Mathf.SmoothDamp(Lright,targetLright,ref tempLright,smoothTime);
+        Lup = Mathf.SmoothDamp(Lup, targetLup, ref tempLup, smoothTime);
+        Lright = Mathf.SmoothDamp(Lright, targetLright, ref tempLright, smoothTime);
 
     }
 }
