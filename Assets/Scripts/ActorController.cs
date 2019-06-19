@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/*
+ * 目前已知bug 但懒得修改
+ * 在rotate 状态下冲刺 会产生人物方向不正确
+ */
 public class ActorController : MonoBehaviour
 {
     //输入模块
@@ -10,7 +13,7 @@ public class ActorController : MonoBehaviour
     private Animator anim;
 
 
-    private SpriteRenderer Sprite;
+    //private SpriteRenderer Sprite;
     //属性
     public LayerMask PlayerLaymask;
     public Vector2 boxSize;
@@ -33,16 +36,19 @@ public class ActorController : MonoBehaviour
     private float jumpTimer = 0;
     [Header("----- 冲刺 -----")]
     public float rushTime;
+    public float rushColdTime = 0.4f;
+    private float rushColdTimer = 0;
     public float rushVelocity;
     private bool rushState;
     [SerializeField]
-    private int Xdir = -1;//左右方向 1 为右  -1 为左
+    private int Xdir = -1;//左右方向  1 为右  -1 为左
+    private int Ydir = 0;  //竖直方向  1 为上  -1 为下
     public Vector3 velocity = Vector3.zero;
     void Awake()
     {
         PI = this.GetComponent<PlayerInput>();
         anim = this.GetComponent<Animator>();
-        Sprite = this.GetComponent<SpriteRenderer>();
+        //Sprite = this.GetComponent<SpriteRenderer>();
     }
     // Update is called once per frame
     void Update()
@@ -50,8 +56,8 @@ public class ActorController : MonoBehaviour
         LRMove();
         UDMove();
         AnimatorController();
-        Rush();
-        Jump();
+        RushFun();
+        JumpFun();
 
         CheckNextAndMove();
     }
@@ -68,15 +74,17 @@ public class ActorController : MonoBehaviour
     } // 获取输入模块数据
     private void UDMove()
     {
-        if (!gravityEnable)
-        {
-            return;
-        }
+        Ydir = Mathf.RoundToInt(PI.Lup);
+
         if (!CheckIsGround())
         {
+            isGround = false;
+            if (!gravityEnable)
+            {
+                return;
+            }
             velocity.y -= gravity * Time.deltaTime;
             velocity.x *= 0.8f;
-            isGround = false;
         }
         else
         {
@@ -92,7 +100,7 @@ public class ActorController : MonoBehaviour
         if (!animEnable)
             return;
         anim.SetFloat("runSpeed", Mathf.Abs(velocity.x));
-        if(PI.rush&&!rushState)
+        if (PI.rush && !rushState && rushColdTimer <= 0)
             anim.SetTrigger("rush");
         if (!isGround)
         {
@@ -108,7 +116,9 @@ public class ActorController : MonoBehaviour
         }
         else
         {
-            Sprite.flipX = !flipx;
+            //Sprite.flipX = !flipx;
+            this.transform.localScale = new Vector3(!flipx?-1:1, 1, 1);
+
         }
 
         if (velocity.x > 1f || velocity.x < -1f)
@@ -125,6 +135,9 @@ public class ActorController : MonoBehaviour
 
         anim.SetInteger("jumpCounter", jumpCounter);
         anim.SetBool("isGround", isGround);
+        anim.SetInteger("Ydir", Ydir);
+        if(PI.attack)
+            anim.SetTrigger("attack");
 
 
     }
@@ -198,7 +211,7 @@ public class ActorController : MonoBehaviour
         return false;
     }
 
-    private void Jump()
+    private void JumpFun() // todo 待修改 使用更加的合理的信号判断
     {
         if (PI.Jump) //按键变化信号
         {
@@ -215,7 +228,7 @@ public class ActorController : MonoBehaviour
                 jumpTimer = 0;
             }
         }
-        else if (jumpState&&PI.inputEnable) // 按住 按键 时
+        else if (jumpState && PI.inputEnable) // 按住 按键 时
         {
             if (jumpTimer > maxJumpTime) // 超出跳跃时间时 
             {
@@ -230,9 +243,10 @@ public class ActorController : MonoBehaviour
         }
     }
 
-    private void Rush()
+    private void RushFun()
     {
-        if (PI.rush && !rushState)
+        rushColdTimer -= Time.deltaTime;
+        if (PI.rush && !rushState && rushColdTimer <= 0)
         {
             StartCoroutine(RushMove(rushTime));
         }
@@ -249,10 +263,19 @@ public class ActorController : MonoBehaviour
 
         yield return new WaitForSeconds(rushTime);
 
+        rushColdTimer = rushColdTime;
         PI.inputEnable = true;
         gravityEnable = true;
         rushState = false;
         //animEnable = true;
+    }
+
+    private void AttackFun()
+    {
+        if (PI.attack)
+        {
+
+        }
     }
 
 
@@ -260,6 +283,7 @@ public class ActorController : MonoBehaviour
     private void Rotate()
     {
         flipx = !flipx;
+
     }
     private void ResetJump()
     {

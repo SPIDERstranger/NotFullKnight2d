@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     public string keyRight;
     public string keyJump;
     public string keyRush;
+    public string keyAttack;
 
     [Header("----- 按键信号 -----")]
     public float Lup;
@@ -19,6 +20,7 @@ public class PlayerInput : MonoBehaviour
     public bool lastJump = false;
     public float smoothTime;
     public bool rush;
+    public bool attack;
 
     [Header("----- 其他设置 -----")]
     public bool inputEnable = true;
@@ -50,6 +52,7 @@ public class PlayerInput : MonoBehaviour
                 Jump = false;
             }
             rush = Input.GetKeyDown(keyRush);
+            attack = Input.GetKeyDown(keyAttack);
         }
         else
         {
@@ -61,6 +64,11 @@ public class PlayerInput : MonoBehaviour
         }
         Lup = Mathf.SmoothDamp(Lup, targetLup, ref tempLup, smoothTime);
         Lright = Mathf.SmoothDamp(Lright, targetLright, ref tempLright, smoothTime);
+
+        if (Input.GetKey(KeyCode.Space))
+            Time.timeScale = 0.3f;
+        else
+            Time.timeScale = 1f;
 
     }
 }
