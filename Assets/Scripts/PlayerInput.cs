@@ -52,7 +52,6 @@ public class PlayerInput : MonoBehaviour
                 Jump = false;
             }
             rush = Input.GetKeyDown(keyRush);
-            attack = Input.GetKeyDown(keyAttack);
         }
         else
         {
@@ -62,6 +61,7 @@ public class PlayerInput : MonoBehaviour
             lastJump = false;
             rush = false;
         }
+            attack = Input.GetKeyDown(keyAttack);
         Lup = Mathf.SmoothDamp(Lup, targetLup, ref tempLup, smoothTime);
         Lright = Mathf.SmoothDamp(Lright, targetLright, ref tempLright, smoothTime);
 

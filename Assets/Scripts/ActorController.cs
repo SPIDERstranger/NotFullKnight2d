@@ -4,6 +4,7 @@ using UnityEngine;
 /*
  * 目前已知bug 但懒得修改
  * 在rotate 状态下冲刺 会产生人物方向不正确
+ * jump 和 冲刺后攻击 会产生奇异的bug
  */
 public class ActorController : MonoBehaviour
 {
@@ -89,7 +90,6 @@ public class ActorController : MonoBehaviour
         else
         {
             isGround = true;
-            Debug.Log("ground");
             velocity.y = 0;
 
         }
@@ -131,7 +131,6 @@ public class ActorController : MonoBehaviour
         }
         anim.SetBool("jump", (velocity.y > 1f));
         anim.SetBool("fall", (velocity.y < -0.5f));
-        Debug.Log("fall velocity" + velocity.y);
 
         anim.SetInteger("jumpCounter", jumpCounter);
         anim.SetBool("isGround", isGround);
@@ -272,24 +271,28 @@ public class ActorController : MonoBehaviour
 
     private void AttackFun()
     {
-        if (PI.attack)
-        {
-
-        }
+            //todo 检测 攻击对象
     }
 
-
+        
     #region FSM 接收的方法
     private void Rotate()
     {
         flipx = !flipx;
-
     }
     private void ResetJump()
     {
         jumpCounter = 0;
-        Debug.Log("aaaaa");
+    }
 
+    private void RunAttackEnter()
+    {
+        PI.inputEnable = false;
+        velocity.x = Xdir * rushVelocity;
+    }
+    private void RunAttackExit()
+    {
+        PI.inputEnable = true;
     }
     #endregion
 }
